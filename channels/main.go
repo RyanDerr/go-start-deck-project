@@ -26,10 +26,10 @@ func main() {
 		// l is companct syntax to mean wait for a value to be sent from the channel and store in a variable l
 		// l is equivilent to <-c and is a blocking call, so the main routine will wait for a value to be sent to the channel
 		// Only 5 or the length of the links slice will be go routines will exist at a time
-		go func() {
+		go func(link string) {
 			time.Sleep(getRandomTimeDelay() * time.Second)
-			go checkLink(l, c)
-		} ()
+			go checkLink(link, c)
+		}(l)
 	}
 }
 
